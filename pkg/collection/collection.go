@@ -33,7 +33,7 @@ func AddGPU() error {
 		}
 		GPUs = append(GPUs,GPU{
 			ID: i,
-			health:    	health,
+			Health:    	health,
 			Model:      *device.Model,
 			Power:      *device.Power,
 			Memory:     *device.Memory,
@@ -67,7 +67,7 @@ func UpdateGPU() error {
 			log.ErrPrint(err)
 			health = "Unhealthy"
 		}
-		g.health = health
+		g.Health = health
 		g.Memory = *status.Memory.Global.Free
 		GPUs = append(NewGPUs,g)
 	}

@@ -7,7 +7,7 @@ import (
 
 type SCV struct {
 	Gpu bool	// If the node has GPU, the value is true.
-	health string	// If all GPU is unhealthy,the value is unhealthy.
+	Health string	// If all GPU is unhealthy,the value is unhealthy.
 	Model string	// If set High mode,it is the best GPU of the GPUs.
 	Level string
 	Power uint		// If set High mode,it is the max power of the GPUs.
@@ -21,7 +21,7 @@ type SCV struct {
 
 type GPU struct {
 	ID uint
-	health string
+	Health string
 	Model string
 	Power uint
 	Memory uint64
@@ -45,7 +45,7 @@ var (
 
 func CheckHealth() string {
 	for _, g := range GPUs{
-		if g.health == "Healthy"{
+		if g.Health == "Healthy"{
 			return "Healthy"
 		}
 	}
@@ -103,7 +103,7 @@ func InitModeSCV(Mode func() GPU){
 	Device := Mode()
 	Scv = SCV{
 		Gpu:         CheckGPU(),
-		health:      CheckHealth(),
+		Health:      CheckHealth(),
 		Model:       Device.Model,
 		Level:       CalculateSCVLevel(),
 		Power:       Device.Power,
@@ -123,7 +123,7 @@ func UpdateModeSCV(Mode func() GPU){
 	Device := Mode()
 	Scv = SCV{
 		Gpu:         CheckGPU(),
-		health:      CheckHealth(),
+		Health:      CheckHealth(),
 		Model:       Device.Model,
 		Level:       CalculateSCVLevel(),
 		Power:       Device.Power,

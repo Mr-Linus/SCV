@@ -6,9 +6,9 @@ import (
 )
 
 func ErrPrint(err error) {
-	fmt.Printf("[ SCV ] - [%s] \"Error: %s\"\n", time.Now(), err)
+	fmt.Printf("[SCV]-[%s] Error: %s\n", time.Now(), err)
 }
 
-func LogPrint(log string) {
-	fmt.Printf("[ SCV ] - [%s] \" %s\"\n", time.Now(), log)
+func Print(log string) {
+	fmt.Printf("[SCV]-[%s]  %s\n", time.Now(), log)
 }

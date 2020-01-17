@@ -12,7 +12,7 @@ func CalculateBestGPUWithHighMode() GPU{
 		Device GPU
 	)
 	for _,g := range GPUs{
-		if g.health == "Unhealthy"{
+		if g.Health == "Unhealthy"{
 			Scores = append(Scores,Score{
 				Device: g,
 				Score:  0,
@@ -41,7 +41,7 @@ func CalculateBestGPUWithFullMode() GPU{
 		Device GPU
 	)
 	for _,g := range GPUs{
-		if g.health == "Unhealthy"{
+		if g.Health == "Unhealthy"{
 			Scores = append(Scores,Score{
 				Device: g,
 				Score:  0,
@@ -70,7 +70,7 @@ func CalculateBestGPUWithLowPowerMode() GPU{
 		Device GPU
 	)
 	for _,g := range GPUs{
-		if g.health == "Unhealthy"{
+		if g.Health == "Unhealthy"{
 			Scores = append(Scores,Score{
 				Device: g,
 				Score:  0,
