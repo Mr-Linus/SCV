@@ -7,4 +7,5 @@ import (
 func main()  {
 	ops.InitSCV("Full")
 	ops.PrintSCV()
+	//ops.InitConfig()
 }
