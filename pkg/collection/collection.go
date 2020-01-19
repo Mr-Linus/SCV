@@ -47,12 +47,11 @@ func AddGPU() error {
 	return err
 }
 
-
-
 func UpdateGPU() error {
 	var NewGPUs []GPU
+	var health string = "Healthy"
 	err := nvml.Init()
-	if err != nil{
+	if  err != nil{
 		log.ErrPrint(err)
 	}
 	defer func() {
@@ -60,16 +59,32 @@ func UpdateGPU() error {
 			log.ErrPrint(err)
 		}
 	}()
-	for _, g := range GPUs{
-		var health string = "Healthy"
-		status,err := g.Device.Status()
+	count, err := nvml.GetDeviceCount()
+	if err != nil {
+		log.ErrPrint(err)
+	}
+	for i := uint(0); i < count; i++{
+		device, err := nvml.NewDevice(i)
+		if err != nil{
+			log.ErrPrint(err)
+		}
+		status,err := device.Status()
 		if err != nil{
 			log.ErrPrint(err)
 			health = "Unhealthy"
 		}
-		g.Health = health
-		g.Memory = *status.Memory.Global.Free
-		GPUs = append(NewGPUs,g)
+		NewGPUs = append(NewGPUs,GPU{
+			ID: i,
+			Health:    	health,
+			Model:      *device.Model,
+			Power:      *device.Power,
+			Memory:     *device.Memory,
+			MemoryClock: *device.Clocks.Memory,
+			FreeMemory: *status.Memory.Global.Free,
+			Cores:      *device.Clocks.Cores,
+			Bandwidth:  *device.PCI.Bandwidth,
+			Device: *device,
+		})
 	}
 	GPUs = NewGPUs
 	return err

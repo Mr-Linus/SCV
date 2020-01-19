@@ -19,7 +19,7 @@ func InitSCV(mode string){
 }
 
 func UpdateSCV(mode string){
-	log.Print("Init SCV, mode:"+mode)
+	log.Print("Update SCV, mode:"+mode)
 	switch mode {
 		case  "Full":
 			collection.UpdateSCVWithFullMode()

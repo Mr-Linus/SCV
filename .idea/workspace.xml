@@ -2,12 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ae40324c-9161-4fce-bec9-0c46da0a0cc0" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/pkg/ops/core.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pkg/ops/label.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pkg/cronjob/task.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/readme.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/go.sum" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/main.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pkg/collection/collection.go" beforeDir="false" afterPath="$PROJECT_DIR$/pkg/collection/collection.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pkg/collection/core.go" beforeDir="false" afterPath="$PROJECT_DIR$/pkg/collection/core.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pkg/ops/core.go" beforeDir="false" afterPath="$PROJECT_DIR$/pkg/ops/core.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pkg/ops/label.go" beforeDir="false" afterPath="$PROJECT_DIR$/pkg/ops/label.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pkg/ops/ops.go" beforeDir="false" afterPath="$PROJECT_DIR$/pkg/ops/ops.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

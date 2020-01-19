@@ -41,6 +41,7 @@ var (
 	Scv SCV
 	GPUs []GPU
 	Mode string
+	Node string
 )
 
 func CheckHealth() string {
