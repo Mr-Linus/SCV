@@ -15,7 +15,7 @@ func main()  {
 	collection.Mode = os.Getenv("MODE")
 	ops.InitSCV(collection.Mode)
 	ops.PrintSCV()
-	ops.InitOutOfClusterConfig()
+	ops.InitInClusterConfig()
 	c := cron.New()
 	cronjob.UpdateSCVJob(c, collection.Mode, collection.Node)
 	cronjob.UpdateModeJob(c)

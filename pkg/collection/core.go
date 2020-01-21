@@ -17,6 +17,7 @@ type SCV struct {
 	FreeMemory uint64
 	Cores uint
 	Bandwidth uint
+	Number uint
 }
 
 type GPU struct {
@@ -73,6 +74,23 @@ func CheckGPU() bool {
 	return false
 }
 
+func CountGPU() uint {
+	err := nvml.Init()
+	if err != nil{
+		log.ErrPrint(err)
+	}
+	defer func() {
+		if err := nvml.Shutdown(); err != nil{
+			log.ErrPrint(err)
+		}
+	}()
+	count, err := nvml.GetDeviceCount()
+	if err != nil{
+		log.ErrPrint(err)
+	}
+	return count
+}
+
 func InitSCVWithHighMode(){
 	InitModeSCV(CalculateBestGPUWithHighMode)
 }
@@ -114,6 +132,7 @@ func InitModeSCV(Mode func() GPU){
 		FreeMemory:  Device.FreeMemory,
 		Cores:       Device.Cores,
 		Bandwidth:   Device.Bandwidth,
+		Number:      CountGPU(),
 	}
 }
 
@@ -134,5 +153,6 @@ func UpdateModeSCV(Mode func() GPU){
 		FreeMemory:  Device.FreeMemory,
 		Cores:       Device.Cores,
 		Bandwidth:   Device.Bandwidth,
+		Number:		 CountGPU(),
 	}
 }
