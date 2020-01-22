@@ -32,6 +32,7 @@ jobs:
             docker version
       - name: Build binary executable file
         run: |
+          ls
           GOOS=linux GOARCH=amd64 go build  -o=scv .
       - name: Build docker image
         run: |
