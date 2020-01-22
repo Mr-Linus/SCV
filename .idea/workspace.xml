@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ae40324c-9161-4fce-bec9-0c46da0a0cc0" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/readme.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,7 +52,7 @@
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
-    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
+    <property name="settings.editor.selected.configurable" value="watcher.settings" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -188,12 +188,13 @@
     <state width="1582" height="280" key="GridCell.Tab.0.right/0.23.1619.1027/-1920.-154.1920.1057@0.23.1619.1027" timestamp="1578330492132" />
     <state width="1577" height="280" key="GridCell.Tab.0.right/0.23.1624.1027/-1920.-154.1920.1057@-1920.-154.1920.1057" timestamp="1579256306673" />
     <state width="1582" height="280" key="GridCell.Tab.0.right/0.23.1626.1027/-1920.-154.1920.1057@0.23.1626.1027" timestamp="1578380783592" />
-    <state x="-1574" y="10" key="SettingsEditor" timestamp="1579255966054">
-      <screen x="-1920" y="-154" width="1920" height="1057" />
+    <state x="293" y="182" key="SettingsEditor" timestamp="1579687398368">
+      <screen x="0" y="23" width="1624" height="1027" />
     </state>
     <state x="-1574" y="10" key="SettingsEditor/0.23.1617.1027/-1920.-154.1920.1057@-1920.-154.1920.1057" timestamp="1579255147402" />
     <state x="-1574" y="10" key="SettingsEditor/0.23.1619.1027/-1920.-154.1920.1057@-1920.-154.1920.1057" timestamp="1579255966054" />
     <state x="293" y="182" key="SettingsEditor/0.23.1624.1027/-1920.-154.1920.1057@0.23.1624.1027" timestamp="1578324936569" />
+    <state x="293" y="182" key="SettingsEditor/0.23.1624.1027@0.23.1624.1027" timestamp="1579687398368" />
     <state x="477" y="252" width="670" height="676" key="search.everywhere.popup" timestamp="1578328561323">
       <screen x="0" y="23" width="1619" height="1027" />
     </state>
