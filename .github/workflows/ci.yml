@@ -32,6 +32,7 @@ jobs:
             docker version
       - name: Build binary executable file
         run: |
+          sudo apt-get install bison ed gawk gcc libc6-dev make -y
           make local
       - name: Build docker image
         run: |
