@@ -6,48 +6,48 @@ import (
 )
 
 type SCV struct {
-	Gpu bool	// If the node has GPU, the value is true.
-	Health string	// If all GPU is unhealthy,the value is unhealthy.
-	Model string	// If set High mode,it is the best GPU of the GPUs.
-	Level string
-	Power uint		// If set High mode,it is the max power of the GPUs.
-	Memory uint64	// The Max of the free memory the single GPU.
-	MemorySum uint64 // The Sum of the free memory of the GPUs.
+	Gpu         bool   // If the node has GPU, the value is true.
+	Health      string // If all GPU is unhealthy,the value is unhealthy.
+	Model       string // If set High mode,it is the best GPU of the GPUs.
+	Level       string
+	Power       uint   // If set High mode,it is the max power of the GPUs.
+	Memory      uint64 // The Max of the free memory the single GPU.
+	MemorySum   uint64 // The Sum of the free memory of the GPUs.
 	MemoryClock uint
-	FreeMemory uint64
-	Cores uint
-	Bandwidth uint
-	Number uint
+	FreeMemory  uint64
+	Cores       uint
+	Bandwidth   uint
+	Number      uint
 }
 
 type GPU struct {
-	ID uint
-	Health string
-	Model string
-	Power uint
-	Memory uint64
+	ID          uint
+	Health      string
+	Model       string
+	Power       uint
+	Memory      uint64
 	MemoryClock uint
-	FreeMemory uint64
-	Cores uint
-	Bandwidth uint
-	Device nvml.Device
+	FreeMemory  uint64
+	Cores       uint
+	Bandwidth   uint
+	Device      nvml.Device
 }
 
 type Score struct {
 	Device GPU
-	Score uint64
+	Score  uint64
 }
 
 var (
-	Scv SCV
+	Scv  SCV
 	GPUs []GPU
 	Mode string
 	Node string
 )
 
 func CheckHealth() string {
-	for _, g := range GPUs{
-		if g.Health == "Healthy"{
+	for _, g := range GPUs {
+		if g.Health == "Healthy" {
 			return "Healthy"
 		}
 	}
@@ -56,16 +56,16 @@ func CheckHealth() string {
 
 func CheckGPU() bool {
 	err := nvml.Init()
-	if err != nil{
+	if err != nil {
 		log.ErrPrint(err)
 	}
 	defer func() {
-		if err := nvml.Shutdown(); err != nil{
+		if err := nvml.Shutdown(); err != nil {
 			log.ErrPrint(err)
 		}
 	}()
 	count, err := nvml.GetDeviceCount()
-	if err != nil{
+	if err != nil {
 		log.ErrPrint(err)
 	}
 	if count > 0 {
@@ -76,47 +76,47 @@ func CheckGPU() bool {
 
 func CountGPU() uint {
 	err := nvml.Init()
-	if err != nil{
+	if err != nil {
 		log.ErrPrint(err)
 	}
 	defer func() {
-		if err := nvml.Shutdown(); err != nil{
+		if err := nvml.Shutdown(); err != nil {
 			log.ErrPrint(err)
 		}
 	}()
 	count, err := nvml.GetDeviceCount()
-	if err != nil{
+	if err != nil {
 		log.ErrPrint(err)
 	}
 	return count
 }
 
-func InitSCVWithHighMode(){
+func InitSCVWithHighMode() {
 	InitModeSCV(CalculateBestGPUWithHighMode)
 }
 
-func InitSCVWithLowPowerMode(){
+func InitSCVWithLowPowerMode() {
 	InitModeSCV(CalculateBestGPUWithLowPowerMode)
 }
 
-func InitSCVWithFullMode(){
+func InitSCVWithFullMode() {
 	InitModeSCV(CalculateBestGPUWithFullMode)
 }
 
-func UpdateSCVWithHighMode(){
+func UpdateSCVWithHighMode() {
 	UpdateModeSCV(CalculateBestGPUWithHighMode)
 }
 
-func UpdateSCVWithFullMode(){
+func UpdateSCVWithFullMode() {
 	UpdateModeSCV(CalculateBestGPUWithFullMode)
 }
 
-func UpdateSCVWithLowPowerMode(){
+func UpdateSCVWithLowPowerMode() {
 	UpdateModeSCV(CalculateBestGPUWithLowPowerMode)
 }
 
-func InitModeSCV(Mode func() GPU){
-	if err := AddGPU(); err != nil{
+func InitModeSCV(Mode func() GPU) {
+	if err := AddGPU(); err != nil {
 		log.ErrPrint(err)
 	}
 	Device := Mode()
@@ -136,7 +136,7 @@ func InitModeSCV(Mode func() GPU){
 	}
 }
 
-func UpdateModeSCV(Mode func() GPU){
+func UpdateModeSCV(Mode func() GPU) {
 	if err := UpdateGPU(); err != nil {
 		log.ErrPrint(err)
 	}
@@ -153,6 +153,6 @@ func UpdateModeSCV(Mode func() GPU){
 		FreeMemory:  Device.FreeMemory,
 		Cores:       Device.Cores,
 		Bandwidth:   Device.Bandwidth,
-		Number:		 CountGPU(),
+		Number:      CountGPU(),
 	}
 }

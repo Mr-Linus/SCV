@@ -1,4 +1,4 @@
-package  main
+package main
 
 import (
 	"github.com/NJUPT-ISL/SCV/pkg/collection"
@@ -9,7 +9,7 @@ import (
 	"sync"
 )
 
-func main()  {
+func main() {
 	var wg sync.WaitGroup
 	collection.Node = os.Getenv("NODE_NAME")
 	collection.Mode = os.Getenv("MODE")
@@ -21,6 +21,6 @@ func main()  {
 	cronjob.UpdateModeJob(c)
 	defer ops.CleanScvLabel(collection.Node)
 	defer c.Stop()
-	cronjob.StartJob(c,&wg)
+	cronjob.StartJob(c, &wg)
 	wg.Wait()
 }

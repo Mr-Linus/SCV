@@ -6,34 +6,34 @@ import (
 	"github.com/NJUPT-ISL/SCV/pkg/log"
 )
 
-func InitSCV(mode string){
-	log.Print("Init SCV, mode:"+mode)
+func InitSCV(mode string) {
+	log.Print("Init SCV, mode:" + mode)
 	switch mode {
-		case  "Full":
-			collection.InitSCVWithFullMode()
-		case  "High":
-			collection.InitSCVWithHighMode()
-		case  "LowPower":
-			collection.InitSCVWithLowPowerMode()
+	case "Full":
+		collection.InitSCVWithFullMode()
+	case "High":
+		collection.InitSCVWithHighMode()
+	case "LowPower":
+		collection.InitSCVWithLowPowerMode()
 	}
 }
 
-func UpdateSCV(mode string){
-	log.Print("Update SCV, mode:"+mode)
+func UpdateSCV(mode string) {
+	log.Print("Update SCV, mode:" + mode)
 	switch mode {
-		case  "Full":
-			collection.UpdateSCVWithFullMode()
-		case  "High":
-			collection.UpdateSCVWithHighMode()
-		case  "LowPower":
-			collection.UpdateSCVWithLowPowerMode()
+	case "Full":
+		collection.UpdateSCVWithFullMode()
+	case "High":
+		collection.UpdateSCVWithHighMode()
+	case "LowPower":
+		collection.UpdateSCVWithLowPowerMode()
 	}
 }
 
-func PrintSCV(){
-	s,err := json.Marshal(&collection.Scv)
-	if err != nil{
+func PrintSCV() {
+	s, err := json.Marshal(&collection.Scv)
+	if err != nil {
 		log.ErrPrint(err)
 	}
-	log.Print("SCV Info: "+string(s))
+	log.Print("SCV Info: " + string(s))
 }

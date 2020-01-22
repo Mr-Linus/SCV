@@ -9,7 +9,7 @@ import (
 	"sync"
 )
 
-func UpdateSCVJob(c *cron.Cron,mode string,name string){
+func UpdateSCVJob(c *cron.Cron, mode string, name string) {
 	if err := c.AddFunc("0 */1 * * * ?", func() {
 		ops.UpdateSCV(mode)
 		ops.PrintSCV()
@@ -19,14 +19,14 @@ func UpdateSCVJob(c *cron.Cron,mode string,name string){
 	}
 }
 
-func UpdateModeJob(c *cron.Cron){
+func UpdateModeJob(c *cron.Cron) {
 	if err := c.AddFunc("0 */5 * * * ?", func() {
 		collection.Mode = os.Getenv("MODE")
 	}); err != nil {
 		log.ErrPrint(err)
 	}
 }
-func StartJob(c *cron.Cron,w *sync.WaitGroup){
+func StartJob(c *cron.Cron, w *sync.WaitGroup) {
 	w.Add(1)
 	c.Start()
 }

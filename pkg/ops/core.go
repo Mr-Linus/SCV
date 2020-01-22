@@ -13,7 +13,7 @@ import (
 
 var Config *rest.Config
 
-func InitInClusterConfig(){
+func InitInClusterConfig() {
 	err := errors.New("")
 	// InClusterConfig
 	log.Print("Init kubernetes Config. ")
@@ -23,7 +23,7 @@ func InitInClusterConfig(){
 	}
 }
 
-func InitOutOfClusterConfig(){
+func InitOutOfClusterConfig() {
 	err := errors.New("")
 	log.Print("Init kubernetes Config. ")
 	Config, err = clientcmd.BuildConfigFromFlags("", "/root/.kube/config")
@@ -32,27 +32,27 @@ func InitOutOfClusterConfig(){
 	}
 }
 
-func SetScvToMap() map[string]string{
+func SetScvToMap() map[string]string {
 	m := make(map[string]string)
 	elem := reflect.ValueOf(collection.Scv)
 	relType := elem.Type()
 	for i := 0; i < relType.NumField(); i++ {
-		if elem.Field(i).Type() == reflect.TypeOf(""){
+		if elem.Field(i).Type() == reflect.TypeOf("") {
 			// TODO：add prefix e.g: isl.gpu/
-			m["scv/"+relType.Field(i).Name] = strings.Replace(elem.Field(i).String()," ","-",-1)
-		}else if elem.Field(i).Type() == reflect.TypeOf(true){
+			m["scv/"+relType.Field(i).Name] = strings.Replace(elem.Field(i).String(), " ", "-", -1)
+		} else if elem.Field(i).Type() == reflect.TypeOf(true) {
 			m["scv/"+relType.Field(i).Name] = BoolToString(elem.Field(i).Bool())
-		}else {
+		} else {
 			m["scv/"+relType.Field(i).Name] = strconv.Itoa(int(elem.Field(i).Uint()))
 		}
 	}
 	return m
 }
 
-func BoolToString(value bool) string{
-	if value{
+func BoolToString(value bool) string {
+	if value {
 		return "True"
-	}else {
+	} else {
 		return "False"
 	}
 }

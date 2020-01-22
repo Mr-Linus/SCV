@@ -8,11 +8,11 @@ import (
 func AddGPU() error {
 	var health string = "Healthy"
 	err := nvml.Init()
-	if  err != nil{
+	if err != nil {
 		log.ErrPrint(err)
 	}
 	defer func() {
-		if err := nvml.Shutdown(); err != nil{
+		if err := nvml.Shutdown(); err != nil {
 			log.ErrPrint(err)
 		}
 	}()
@@ -20,28 +20,28 @@ func AddGPU() error {
 	if err != nil {
 		log.ErrPrint(err)
 	}
-	for i := uint(0); i < count; i++{
+	for i := uint(0); i < count; i++ {
 
 		device, err := nvml.NewDevice(i)
-		if err != nil{
+		if err != nil {
 			log.ErrPrint(err)
 		}
-		status,err := device.Status()
-		if err != nil{
+		status, err := device.Status()
+		if err != nil {
 			log.ErrPrint(err)
 			health = "Unhealthy"
 		}
-		GPUs = append(GPUs,GPU{
-			ID: i,
-			Health:    	health,
-			Model:      *device.Model,
-			Power:      *device.Power,
-			Memory:     *device.Memory,
+		GPUs = append(GPUs, GPU{
+			ID:          i,
+			Health:      health,
+			Model:       *device.Model,
+			Power:       *device.Power,
+			Memory:      *device.Memory,
 			MemoryClock: *device.Clocks.Memory,
-			FreeMemory: *status.Memory.Global.Free,
-			Cores:      *device.Clocks.Cores,
-			Bandwidth:  *device.PCI.Bandwidth,
-			Device: *device,
+			FreeMemory:  *status.Memory.Global.Free,
+			Cores:       *device.Clocks.Cores,
+			Bandwidth:   *device.PCI.Bandwidth,
+			Device:      *device,
 		})
 	}
 	return err
@@ -51,11 +51,11 @@ func UpdateGPU() error {
 	var NewGPUs []GPU
 	var health string = "Healthy"
 	err := nvml.Init()
-	if  err != nil{
+	if err != nil {
 		log.ErrPrint(err)
 	}
 	defer func() {
-		if err := nvml.Shutdown(); err != nil{
+		if err := nvml.Shutdown(); err != nil {
 			log.ErrPrint(err)
 		}
 	}()
@@ -63,30 +63,29 @@ func UpdateGPU() error {
 	if err != nil {
 		log.ErrPrint(err)
 	}
-	for i := uint(0); i < count; i++{
+	for i := uint(0); i < count; i++ {
 		device, err := nvml.NewDevice(i)
-		if err != nil{
+		if err != nil {
 			log.ErrPrint(err)
 		}
-		status,err := device.Status()
-		if err != nil{
+		status, err := device.Status()
+		if err != nil {
 			log.ErrPrint(err)
 			health = "Unhealthy"
 		}
-		NewGPUs = append(NewGPUs,GPU{
-			ID: i,
-			Health:    	health,
-			Model:      *device.Model,
-			Power:      *device.Power,
-			Memory:     *device.Memory,
+		NewGPUs = append(NewGPUs, GPU{
+			ID:          i,
+			Health:      health,
+			Model:       *device.Model,
+			Power:       *device.Power,
+			Memory:      *device.Memory,
 			MemoryClock: *device.Clocks.Memory,
-			FreeMemory: *status.Memory.Global.Free,
-			Cores:      *device.Clocks.Cores,
-			Bandwidth:  *device.PCI.Bandwidth,
-			Device: *device,
+			FreeMemory:  *status.Memory.Global.Free,
+			Cores:       *device.Clocks.Cores,
+			Bandwidth:   *device.PCI.Bandwidth,
+			Device:      *device,
 		})
 	}
 	GPUs = NewGPUs
 	return err
 }
-

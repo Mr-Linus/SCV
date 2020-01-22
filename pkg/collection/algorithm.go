@@ -5,27 +5,27 @@ import (
 	"github.com/NJUPT-ISL/SCV/pkg/log"
 )
 
-func CalculateBestGPUWithHighMode() GPU{
+func CalculateBestGPUWithHighMode() GPU {
 	var (
 		Scores []Score
-		Max uint64 = 0
+		Max    uint64 = 0
 		Device GPU
 	)
-	for _,g := range GPUs{
-		if g.Health == "Unhealthy"{
-			Scores = append(Scores,Score{
+	for _, g := range GPUs {
+		if g.Health == "Unhealthy" {
+			Scores = append(Scores, Score{
 				Device: g,
 				Score:  0,
 			})
 			continue
-		}else {
-			Scores = append(Scores,Score{
+		} else {
+			Scores = append(Scores, Score{
 				Device: g,
 				Score:  g.CalculateScoreWithHighMode(),
 			})
 		}
 	}
-	for _,s := range Scores{
+	for _, s := range Scores {
 		if s.Score > Max {
 			Max = s.Score
 			Device = s.Device
@@ -34,27 +34,27 @@ func CalculateBestGPUWithHighMode() GPU{
 	return Device
 }
 
-func CalculateBestGPUWithFullMode() GPU{
+func CalculateBestGPUWithFullMode() GPU {
 	var (
 		Scores []Score
-		Max uint64 = 0
+		Max    uint64 = 0
 		Device GPU
 	)
-	for _,g := range GPUs{
-		if g.Health == "Unhealthy"{
-			Scores = append(Scores,Score{
+	for _, g := range GPUs {
+		if g.Health == "Unhealthy" {
+			Scores = append(Scores, Score{
 				Device: g,
 				Score:  0,
 			})
 			continue
-		}else {
-			Scores = append(Scores,Score{
+		} else {
+			Scores = append(Scores, Score{
 				Device: g,
 				Score:  g.CalculateScoreWithFullMode(),
 			})
 		}
 	}
-	for _,s := range Scores{
+	for _, s := range Scores {
 		if s.Score > Max {
 			Max = s.Score
 			Device = s.Device
@@ -63,27 +63,27 @@ func CalculateBestGPUWithFullMode() GPU{
 	return Device
 }
 
-func CalculateBestGPUWithLowPowerMode() GPU{
+func CalculateBestGPUWithLowPowerMode() GPU {
 	var (
 		Scores []Score
-		Max uint64 = 0
+		Max    uint64 = 0
 		Device GPU
 	)
-	for _,g := range GPUs{
-		if g.Health == "Unhealthy"{
-			Scores = append(Scores,Score{
+	for _, g := range GPUs {
+		if g.Health == "Unhealthy" {
+			Scores = append(Scores, Score{
 				Device: g,
 				Score:  0,
 			})
 			continue
-		}else {
-			Scores = append(Scores,Score{
+		} else {
+			Scores = append(Scores, Score{
 				Device: g,
 				Score:  g.CalculateScoreWithLowPowerMode(),
 			})
 		}
 	}
-	for _,s := range Scores{
+	for _, s := range Scores {
 		if s.Score > Max {
 			Max = s.Score
 			Device = s.Device
@@ -92,49 +92,49 @@ func CalculateBestGPUWithLowPowerMode() GPU{
 	return Device
 }
 
-func (g *GPU) CalculateScoreWithWeight(FreeW uint64,MemW uint64,MemCW uint64,CoreW uint64,BandC uint64,PoW uint64) uint64{
+func (g *GPU) CalculateScoreWithWeight(FreeW uint64, MemW uint64, MemCW uint64, CoreW uint64, BandC uint64, PoW uint64) uint64 {
 	maxFree, err := CalculateMemoryMaxGPU()
-	if err != nil{
+	if err != nil {
 		log.ErrPrint(err)
 	}
-	maxMemClock,err := CalculateMemoryClockMaxGPU()
-	if err != nil{
+	maxMemClock, err := CalculateMemoryClockMaxGPU()
+	if err != nil {
 		log.ErrPrint(err)
 	}
 	mem, err := CalculateMemoryMaxGPU()
-	if err != nil{
+	if err != nil {
 		log.ErrPrint(err)
 	}
 	maxBand, err := CalculateMaxBandwidthGPU()
-	if err != nil{
+	if err != nil {
 		log.ErrPrint(err)
 	}
 	maxCore, err := CalculateCoreMaxGPU()
-	if err != nil{
+	if err != nil {
 		log.ErrPrint(err)
 	}
 	minP, err := CalculateMinPowerGPU()
-	if err != nil{
+	if err != nil {
 		log.ErrPrint(err)
 	}
-	return g.FreeMemory/maxFree * FreeW + uint64(g.MemoryClock/maxMemClock) * MemCW + g.Memory/mem * MemW + uint64(g.Bandwidth/maxBand) * BandC + uint64(g.Cores/maxCore) * CoreW + uint64(1 - g.Power/minP) * PoW
+	return g.FreeMemory/maxFree*FreeW + uint64(g.MemoryClock/maxMemClock)*MemCW + g.Memory/mem*MemW + uint64(g.Bandwidth/maxBand)*BandC + uint64(g.Cores/maxCore)*CoreW + uint64(1-g.Power/minP)*PoW
 }
 
 func (g *GPU) CalculateScoreWithHighMode() uint64 {
-	return  g.CalculateScoreWithWeight(8,3,4,10,5,0)
+	return g.CalculateScoreWithWeight(8, 3, 4, 10, 5, 0)
 }
 
 func (g *GPU) CalculateScoreWithFullMode() uint64 {
-	return  g.CalculateScoreWithWeight(10,8,5,4,4,0)
+	return g.CalculateScoreWithWeight(10, 8, 5, 4, 4, 0)
 }
 
 func (g *GPU) CalculateScoreWithLowPowerMode() uint64 {
-	return  g.CalculateScoreWithWeight(5,2,1,1,3,10)
+	return g.CalculateScoreWithWeight(5, 2, 1, 1, 3, 10)
 }
 
-func CalculateSCVLevel() string{
-	MaxFreeMem,err := CalculateMemoryFreeMaxGPU()
-	if err != nil{
+func CalculateSCVLevel() string {
+	MaxFreeMem, err := CalculateMemoryFreeMaxGPU()
+	if err != nil {
 		log.ErrPrint(err)
 	}
 	if MaxFreeMem > 10000 {
@@ -145,7 +145,7 @@ func CalculateSCVLevel() string{
 	}
 	return "Low"
 }
-func CalculateSCVMemorySum() uint64{
+func CalculateSCVMemorySum() uint64 {
 	sum, err := CalculateGPUMemorySum()
 	if err != nil {
 		log.ErrPrint(err)
@@ -153,20 +153,20 @@ func CalculateSCVMemorySum() uint64{
 	return sum
 }
 
-func CalculateGPUMemorySum() (uint64, error){
+func CalculateGPUMemorySum() (uint64, error) {
 	var Sum uint64 = 0
-	for _, g := range GPUs{
+	for _, g := range GPUs {
 		Sum += g.FreeMemory
 	}
-	if Sum == 0{
-		return  0, errors.New("The Sum of the GPU memory is 0. ")
+	if Sum == 0 {
+		return 0, errors.New("The Sum of the GPU memory is 0. ")
 	}
 	return Sum, nil
 }
 
-func CalculateCoreMaxGPU() (uint, error){
+func CalculateCoreMaxGPU() (uint, error) {
 	var maxCore uint = 0
-	for _, g := range GPUs{
+	for _, g := range GPUs {
 		if g.Cores > maxCore {
 			maxCore = g.Cores
 		}
@@ -177,9 +177,9 @@ func CalculateCoreMaxGPU() (uint, error){
 	return maxCore, nil
 }
 
-func CalculateMemoryFreeMaxGPU() (uint64, error){
+func CalculateMemoryFreeMaxGPU() (uint64, error) {
 	var maxMem uint64 = 0
-	for _, g := range GPUs{
+	for _, g := range GPUs {
 		if g.FreeMemory > maxMem {
 			maxMem = g.FreeMemory
 		}
@@ -190,9 +190,9 @@ func CalculateMemoryFreeMaxGPU() (uint64, error){
 	return maxMem, nil
 }
 
-func CalculateMemoryClockMaxGPU() (uint, error){
+func CalculateMemoryClockMaxGPU() (uint, error) {
 	var maxMemC uint = 0
-	for _, g := range GPUs{
+	for _, g := range GPUs {
 		if g.MemoryClock > maxMemC {
 			maxMemC = g.MemoryClock
 		}
@@ -203,9 +203,9 @@ func CalculateMemoryClockMaxGPU() (uint, error){
 	return maxMemC, nil
 }
 
-func CalculateMemoryMaxGPU() (uint64, error){
+func CalculateMemoryMaxGPU() (uint64, error) {
 	var maxMem uint64 = 0
-	for _, g := range GPUs{
+	for _, g := range GPUs {
 		if g.Memory > maxMem {
 			maxMem = g.Memory
 		}
@@ -216,9 +216,9 @@ func CalculateMemoryMaxGPU() (uint64, error){
 	return maxMem, nil
 }
 
-func CalculateMaxBandwidthGPU() (uint, error){
+func CalculateMaxBandwidthGPU() (uint, error) {
 	var maxBand uint = 0
-	for _, g := range GPUs{
+	for _, g := range GPUs {
 		if g.Bandwidth > maxBand {
 			maxBand = g.Bandwidth
 		}
@@ -229,9 +229,9 @@ func CalculateMaxBandwidthGPU() (uint, error){
 	return maxBand, nil
 }
 
-func CalculateMinPowerGPU() (uint, error){
+func CalculateMinPowerGPU() (uint, error) {
 	var maxPower uint = 0
-	for _, g := range GPUs{
+	for _, g := range GPUs {
 		if g.Power > maxPower {
 			maxPower = g.Power
 		}
