@@ -32,7 +32,7 @@ jobs:
             docker version
       - name: Build binary executable file
         run: |
-          make all
+          make local
       - name: Build docker image
         run: |
           make build
