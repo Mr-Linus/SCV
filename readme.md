@@ -4,9 +4,9 @@ It can cooperate with the scheduler to achieve
 fine-grained scheduling tasks.
 
 ![Status](https://github.com/NJUPT-ISL/SCV/workflows/Go/badge.svg)
-
+[![Go Report Card](https://goreportcard.com/badge/github.com/NJUPT-ISL/SCV)](https://goreportcard.com/report/github.com/NJUPT-ISL/SCV)
 ### Get Started
-- Ensure that the container runtime is installed on each kubernetes worker node. See [nvidia-docker](https://github.com/NVIDIA/nvidia-docker#quickstart)
+- Ensure that the nvidia container runtime and the nvidia driver are  installed on each kubernetes worker node. See [nvidia-docker](https://github.com/NVIDIA/nvidia-docker#quickstart)
 for more details.
     -  Ubuntu 
        ```shell
@@ -47,7 +47,7 @@ for more details.
             "registry-mirrors": ["https://registry.docker-cn.com"]
         }
     ```
-- Deploy the SCV into your kubernetes cluster
+- Deploy the SCV into your kubernetes cluster:
   ```shell
    kubectl apply -f  https://raw.githubusercontent.com/NJUPT-ISL/SCV/master/deploy/deploy.yaml
   ```
@@ -56,3 +56,17 @@ for more details.
     ```shell
     kubectl get nodes --show-labels  
   ```
+  
+### Set SCV Mode
+SCV has three working modes: 
+- Full (default) Prioritize the most GPU free memory on the node.
+- High Prioritize the highest operating GPU on the node.
+- LowPower Prioritize the lowest power GPU on the node.
+
+We just need to modify the following part of the 
+deploy yaml file to the mode we want:
+```yaml
+            - name: MODE
+              value: "Full"
+```
+The options for the value are: `High`，`LowPower`.

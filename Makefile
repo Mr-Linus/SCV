@@ -10,6 +10,8 @@ build:
 push:
 	sudo docker push registry.cn-hangzhou.aliyuncs.com/geekcloud/scv
 
+format:
+	sudo gofmt -l -w .
 clean:
 	sudo rm -f scv
 
