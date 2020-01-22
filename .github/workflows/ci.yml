@@ -34,16 +34,15 @@ jobs:
             docker version
       - name: Build binary executable file
         run: |
-          ls
-          GOOS=linux GOARCH=amd64 go build  -o=scv .
+          make local
       - name: Build docker image
         run: |
-          sudo docker build --no-cache . -t registry.cn-hangzhou.aliyuncs.com/geekcloud/scv
+          make build
       - name: push image
         env:
           username: ${{ secrets.username }}
           password: ${{ secrets.password }}
         run: |
           echo $password | sudo docker login "registry.cn-hangzhou.aliyuncs.com" -u "$username" --password-stdin
-          sudo docker push registry.cn-hangzhou.aliyuncs.com/geekcloud/scv
+          make push
           sudo docker logout
