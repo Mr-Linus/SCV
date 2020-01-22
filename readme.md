@@ -3,7 +3,7 @@ SCV is a distributed cluster GPU sniffer.
 It can cooperate with the scheduler to achieve 
 fine-grained scheduling tasks.
 
-![](https://github.com/NJUPT-ISL/SCV/workflows/Go/badge.svg)
+![Status](https://github.com/NJUPT-ISL/SCV/workflows/Go/badge.svg)
 
 ### Get Started
 - Ensure that the container runtime is installed on each kubernetes worker node. See [nvidia-docker](https://github.com/NVIDIA/nvidia-docker#quickstart)
