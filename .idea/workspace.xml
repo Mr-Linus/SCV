@@ -2,11 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ae40324c-9161-4fce-bec9-0c46da0a0cc0" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/deploy/deploy.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Makefile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/main.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pkg/collection/core.go" beforeDir="false" afterPath="$PROJECT_DIR$/pkg/collection/core.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/readme.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,6 +59,15 @@
     </key>
   </component>
   <component name="RunManager" selected="Go Build.go build github.com/NJUPT-ISL/SCV">
+    <configuration default="true" type="GoApplicationRunConfiguration" factoryName="Go Application">
+      <module name="scv" />
+      <working_directory value="$PROJECT_DIR$/" />
+      <go_parameters value="-i" />
+      <kind value="FILE" />
+      <filePath value="$PROJECT_DIR$/" />
+      <directory value="$PROJECT_DIR$/" />
+      <method v="2" />
+    </configuration>
     <configuration name="go build github.com/NJUPT-ISL/SCV" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
       <module name="scv" />
       <working_directory value="$PROJECT_DIR$" />
@@ -92,6 +99,16 @@
       <pattern value="^TestInitSCV$" />
       <method v="2" />
     </configuration>
+    <configuration default="true" type="GoTestRunConfiguration" factoryName="Go Test">
+      <module name="scv" />
+      <working_directory value="$PROJECT_DIR$/" />
+      <go_parameters value="-i" />
+      <framework value="gotest" />
+      <kind value="DIRECTORY" />
+      <directory value="$PROJECT_DIR$/" />
+      <filePath value="$PROJECT_DIR$/" />
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Go Build.go build github.com/NJUPT-ISL/SCV" />
@@ -115,6 +132,9 @@
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
+  <component name="UnknownFeatures">
+    <option featureType="com.intellij.fileTypeFactory" implementationName="Makefile" />
+  </component>
   <component name="VgoProject">
     <integration-enabled>true</integration-enabled>
     <proxy>https://goproxy.io</proxy>
@@ -124,6 +144,10 @@
       <screen x="0" y="23" width="1624" height="1027" />
     </state>
     <state x="412" y="204" key="#Go_Modules_(vgo)/0.23.1624.1027/-1920.-154.1920.1057@0.23.1624.1027" timestamp="1578326648375" />
+    <state x="474" y="202" key="#Other_File_Types" timestamp="1579678780243">
+      <screen x="0" y="23" width="1619" height="1027" />
+    </state>
+    <state x="474" y="202" key="#Other_File_Types/0.23.1619.1027@0.23.1619.1027" timestamp="1579678780243" />
     <state width="1577" height="345" key="GridCell.Tab.0.bottom" timestamp="1579269758352">
       <screen x="-1920" y="-177" width="1920" height="1080" />
     </state>

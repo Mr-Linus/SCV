@@ -4,8 +4,53 @@ It can cooperate with the scheduler to achieve
 fine-grained scheduling tasks.
 
 ### Get Started
-- Run SCV out of K8S
-```shell
-export MODE=Full NODE_NAME=test
-go run main.go
-```
+- Ensure that the container runtime is installed on each kubernetes worker node. See [nvidia-docker](https://github.com/NVIDIA/nvidia-docker#quickstart)
+for more details.
+    -  Ubuntu 
+       ```shell
+            # Add the package repositories
+            $ distribution=$(. /etc/os-release;echo $ID$VERSION_ID)
+            $ curl -s -L https://nvidia.github.io/nvidia-docker/gpgkey | sudo apt-key add -
+            $ curl -s -L https://nvidia.github.io/nvidia-docker/$distribution/nvidia-docker.list | sudo tee /etc/apt/sources.list.d/nvidia-docker.list
+            
+            $ sudo apt-get update && sudo apt-get install -y nvidia-container-toolkit nvidia-container-runtime
+            $ sudo systemctl restart docker
+        ```
+    - Centos
+        ```shell
+            $ distribution=$(. /etc/os-release;echo $ID$VERSION_ID)
+            $ curl -s -L https://nvidia.github.io/nvidia-docker/$distribution/nvidia-docker.repo | sudo tee /etc/yum.repos.d/nvidia-docker.repo
+            
+            $ sudo yum install -y nvidia-container-toolkit nvidia-container-runtime
+            $ sudo systemctl restart docker
+        ```
+- Enable the nvidia-runtime as docker default runtime on each kubernetes worker node.
+
+    You need to modify `/etc/docker/daemon.json` to the following content on each worker node：
+    ```json
+        {
+            "default-runtime": "nvidia",
+            "runtimes": {
+                "nvidia": {
+                    "path": "/usr/bin/nvidia-container-runtime",
+                    "runtimeArgs": []
+                }
+            },
+            "exec-opts": ["native.cgroupdriver=systemd"],
+            "log-driver": "json-file",
+            "log-opts": {
+              "max-size": "100m"
+            },
+            "storage-driver": "overlay2",
+            "registry-mirrors": ["https://registry.docker-cn.com"]
+        }
+    ```
+- Deploy the SCV into your kubernetes cluster
+  ```shell
+   kubectl apply -f  https://raw.githubusercontent.com/NJUPT-ISL/SCV/master/deploy/deploy.yaml
+  ```
+
+- Check the node label whether the nodes are added "scv" related tags:
+    ```shell
+    kubectl get nodes --show-labels  
+  ```
