@@ -60,12 +60,12 @@ for more details.
     ```
 - Deploy the SCV into your kubernetes cluster:
     ```shell
-   kubectl apply -f  https://raw.githubusercontent.com/NJUPT-ISL/SCV/master/deploy/deploy.yaml
+        kubectl apply -f  https://raw.githubusercontent.com/NJUPT-ISL/SCV/master/deploy/deploy.yaml
     ```
 
 - Check the node label whether the nodes are added "scv" related tags:
     ```shell
-    kubectl get nodes --show-labels  
+        kubectl get nodes --show-labels  
     ```
   
 ### Set SCV Mode
@@ -76,9 +76,9 @@ SCV has three working modes:
 
 We just need to modify the following part of the 
 deploy yaml file to the mode we want:
-```yaml
+    ```yaml
             - name: MODE
               value: "Full"
-```
+    ```
 The options for the value are: `High`，`LowPower`.
 
