@@ -1,10 +1,19 @@
 ## SCV
 SCV is a distributed cluster GPU sniffer. 
-It can cooperate with the scheduler to achieve 
-fine-grained scheduling tasks.
+It can cooperate with [Yoda-Scheduler](https://github.com/NJUPT-ISL/Yoda-Scheduler) to achieve 
+fine-grained GPU scheduling tasks.
 
 ![Status](https://github.com/NJUPT-ISL/SCV/workflows/Go/badge.svg)
 [![Go Report Card](https://goreportcard.com/badge/github.com/NJUPT-ISL/SCV)](https://goreportcard.com/report/github.com/NJUPT-ISL/SCV)
+### GPU metrics that SCV can monitor
+- Core Frequency
+- Model
+- Free Memory 
+- Total Memory
+- Memory Frequency
+- Bandwidth
+- Power
+- GPU Number
 ### Get Started
 - Ensure that the nvidia container runtime and the nvidia driver are  installed on each kubernetes worker node. See [nvidia-docker](https://github.com/NVIDIA/nvidia-docker#quickstart)
 for more details.
@@ -26,7 +35,7 @@ for more details.
             $ sudo yum install -y nvidia-container-toolkit nvidia-container-runtime
             $ sudo systemctl restart docker
         ```
-- Enable the nvidia-runtime as docker default runtime on each kubernetes worker node.
+- Enable the nvidia-container-runtime as docker default runtime on each kubernetes worker node.
 
     You need to modify `/etc/docker/daemon.json` to the following content on each worker node：
     ```json
@@ -70,3 +79,4 @@ deploy yaml file to the mode we want:
               value: "Full"
 ```
 The options for the value are: `High`，`LowPower`.
+
