@@ -57,14 +57,14 @@ for more details.
         }
     ```
 - Deploy the SCV into your kubernetes cluster:
-  ```shell
+    ```shell
    kubectl apply -f  https://raw.githubusercontent.com/NJUPT-ISL/SCV/master/deploy/deploy.yaml
-  ```
+    ```
 
 - Check the node label whether the nodes are added "scv" related tags:
     ```shell
     kubectl get nodes --show-labels  
-  ```
+    ```
   
 ### Set SCV Mode
 SCV has three working modes: 
