@@ -18,6 +18,7 @@ fine-grained GPU scheduling tasks.
 - Ensure that the nvidia container runtime and the nvidia driver are  installed on each kubernetes worker node. See [nvidia-docker](https://github.com/NVIDIA/nvidia-docker#quickstart)
 for more details.
     -  Ubuntu 
+    
        ```shell
             # Add the package repositories
             $ distribution=$(. /etc/os-release;echo $ID$VERSION_ID)
@@ -28,6 +29,7 @@ for more details.
             $ sudo systemctl restart docker
         ```
     - Centos
+    
         ```shell
             $ distribution=$(. /etc/os-release;echo $ID$VERSION_ID)
             $ curl -s -L https://nvidia.github.io/nvidia-docker/$distribution/nvidia-docker.repo | sudo tee /etc/yum.repos.d/nvidia-docker.repo
