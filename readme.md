@@ -20,22 +20,22 @@ for more details.
     -  Ubuntu 
     
        ```shell
-            # Add the package repositories
-            $ distribution=$(. /etc/os-release;echo $ID$VERSION_ID)
-            $ curl -s -L https://nvidia.github.io/nvidia-docker/gpgkey | sudo apt-key add -
-            $ curl -s -L https://nvidia.github.io/nvidia-docker/$distribution/nvidia-docker.list | sudo tee /etc/apt/sources.list.d/nvidia-docker.list
+       # Add the package repositories
+       $ distribution=$(. /etc/os-release;echo $ID$VERSION_ID)
+       $ curl -s -L https://nvidia.github.io/nvidia-docker/gpgkey | sudo apt-key add -
+       $ curl -s -L https://nvidia.github.io/nvidia-docker/$distribution/nvidia-docker.list | sudo tee /etc/apt/sources.list.d/nvidia-docker.list
             
-            $ sudo apt-get update && sudo apt-get install -y nvidia-container-toolkit nvidia-container-runtime
-            $ sudo systemctl restart docker
+       $ sudo apt-get update && sudo apt-get install -y nvidia-container-toolkit nvidia-container-runtime
+       $ sudo systemctl restart docker
         ```
     - Centos
     
         ```shell
-            $ distribution=$(. /etc/os-release;echo $ID$VERSION_ID)
-            $ curl -s -L https://nvidia.github.io/nvidia-docker/$distribution/nvidia-docker.repo | sudo tee /etc/yum.repos.d/nvidia-docker.repo
+        $ distribution=$(. /etc/os-release;echo $ID$VERSION_ID)
+        $ curl -s -L https://nvidia.github.io/nvidia-docker/$distribution/nvidia-docker.repo | sudo tee /etc/yum.repos.d/nvidia-docker.repo
             
-            $ sudo yum install -y nvidia-container-toolkit nvidia-container-runtime
-            $ sudo systemctl restart docker
+        $ sudo yum install -y nvidia-container-toolkit nvidia-container-runtime
+        $ sudo systemctl restart docker
         ```
 - Enable the nvidia-container-runtime as docker default runtime on each kubernetes worker node.
 
@@ -60,7 +60,7 @@ for more details.
     ```
 - Deploy the SCV into your kubernetes cluster:
     ```shell
-   kubectl apply -f  https://raw.githubusercontent.com/NJUPT-ISL/SCV/master/deploy/deploy.yaml
+    kubectl apply -f  https://raw.githubusercontent.com/NJUPT-ISL/SCV/master/deploy/deploy.yaml
     ```
 
 - Check the node label whether the nodes are added "scv" related tags:
@@ -76,9 +76,11 @@ SCV has three working modes:
 
 We just need to modify the following part of the 
 deploy yaml file to the mode we want:
-```yaml
-            - name: MODE
-              value: "Full"
-```
-The options for the value are: `High`，`LowPower`.
+
+   ```yaml
+      - name: MODE
+        value: "Full"
+   ```
+   
+> The options for the value are: `High`，`LowPower`.
 
