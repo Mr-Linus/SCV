@@ -17,7 +17,7 @@ func UpdateLabel(label map[string]string, name string) {
 		log.ErrPrint(err)
 	} else {
 		if !CheckScvLabel(name) {
-			log.Print("Label Changed ready to update.")
+			log.Print("Label Changed, ready to update.")
 			nodeLabel := node.GetLabels()
 			for i, v := range label {
 				nodeLabel[i] = v

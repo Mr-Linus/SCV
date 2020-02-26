@@ -10,7 +10,8 @@ import (
 )
 
 func UpdateSCVJob(c *cron.Cron, name string) {
-	if err := c.AddFunc("*/10 * * * * ?", func() {
+	if err := c.AddFunc("*/2 * * * * ?", func() {
+		ops.UpdateSCV(collection.Mode)
 		ops.UpdateScvLabel(name)
 	}); err != nil {
 		log.ErrPrint(err)
