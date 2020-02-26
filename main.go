@@ -17,7 +17,7 @@ func main() {
 	ops.PrintSCV()
 	ops.InitInClusterConfig()
 	c := cron.New()
-	cronjob.UpdateSCVJob(c, collection.Mode, collection.Node)
+	cronjob.UpdateSCVJob(c, collection.Node)
 	cronjob.UpdateModeJob(c)
 	defer ops.CleanScvLabel(collection.Node)
 	defer c.Stop()
