@@ -133,14 +133,14 @@ func (g *GPU) CalculateScoreWithLowPowerMode() uint64 {
 }
 
 func CalculateSCVLevel() string {
-	MaxFreeMem, err := CalculateMemoryFreeMaxGPU()
+	MaxMem, err := CalculateMemoryMaxGPU()
 	if err != nil {
 		log.ErrPrint(err)
 	}
-	if MaxFreeMem > 10000 {
+	if MaxMem > 10000 {
 		return "High"
 	}
-	if MaxFreeMem >= 4000 {
+	if MaxMem >= 4000 {
 		return "Medium"
 	}
 	return "Low"
