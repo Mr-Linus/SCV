@@ -113,11 +113,11 @@ func (g *GPU) CalculateScoreWithWeight(FreeW uint64, MemW uint64, MemCW uint64, 
 	if err != nil {
 		log.ErrPrint(err)
 	}
-	minP, err := CalculateMinPowerGPU()
+	maxP, err := CalculateMaxPowerGPU()
 	if err != nil {
 		log.ErrPrint(err)
 	}
-	return g.FreeMemory/maxFree*FreeW + uint64(g.MemoryClock/maxMemClock)*MemCW + g.Memory/mem*MemW + uint64(g.Bandwidth/maxBand)*BandC + uint64(g.Cores/maxCore)*CoreW + uint64(1-g.Power/minP)*PoW
+	return g.FreeMemory/maxFree*FreeW + uint64(g.MemoryClock/maxMemClock)*MemCW + g.Memory/mem*MemW + uint64(g.Bandwidth/maxBand)*BandC + uint64(g.Cores/maxCore)*CoreW + uint64(1-g.Power/maxP)*PoW
 }
 
 func (g *GPU) CalculateScoreWithHighMode() uint64 {
@@ -229,7 +229,7 @@ func CalculateMaxBandwidthGPU() (uint, error) {
 	return maxBand, nil
 }
 
-func CalculateMinPowerGPU() (uint, error) {
+func CalculateMaxPowerGPU() (uint, error) {
 	var maxPower uint = 0
 	for _, g := range GPUs {
 		if g.Power > maxPower {

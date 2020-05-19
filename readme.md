@@ -9,13 +9,13 @@ fine-grained GPU scheduling tasks.
 - Core Frequency
 - Model
 - Free Memory 
-- Total Memory
+- Total Memory 
 - Memory Frequency
 - Bandwidth
 - Power
 - GPU Number
 ### Get Started
-- Ensure that the nvidia container runtime and the nvidia driver are  installed on each kubernetes worker node. See [nvidia-docker](https://github.com/NVIDIA/nvidia-docker#quickstart)
+- Ensure that the nvidia container runtime and the nvidia driver are installed on each kubernetes worker node. See [nvidia-docker](https://github.com/NVIDIA/nvidia-docker#quickstart)
 for more details.
     -  Ubuntu 
     
