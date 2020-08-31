@@ -1,7 +1,56 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ae40324c-9161-4fce-bec9-0c46da0a0cc0" name="Default Changelist" comment="" />
+    <list default="true" id="ae40324c-9161-4fce-bec9-0c46da0a0cc0" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/scv.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Makefile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/PROJECT" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/v1/groupversion_info.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/v1/scv_types.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/v1/zz_generated.deepcopy.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/certmanager/certificate.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/certmanager/kustomization.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/certmanager/kustomizeconfig.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/crd/bases/core.run-linux.com_scvs.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/crd/kustomization.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/crd/kustomizeconfig.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/crd/patches/cainjection_in_scvs.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/crd/patches/webhook_in_scvs.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/default/kustomization.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/default/manager_auth_proxy_patch.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/default/manager_webhook_patch.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/default/webhookcainjection_patch.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/manager/kustomization.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/manager/manager.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/prometheus/kustomization.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/prometheus/monitor.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/rbac/auth_proxy_role.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/rbac/auth_proxy_role_binding.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/rbac/auth_proxy_service.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/rbac/kustomization.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/rbac/leader_election_role.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/rbac/leader_election_role_binding.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/rbac/role_binding.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/rbac/scv_editor_role.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/rbac/scv_viewer_role.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/samples/core_v1_scv.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/webhook/kustomization.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/webhook/kustomizeconfig.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/webhook/manifests.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/webhook/service.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/go.sum" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hack/boilerplate.go.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/main.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pkg/collector/collector.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pkg/log/log.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.github/workflows/ci.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -58,6 +107,15 @@
     </key>
   </component>
   <component name="RunManager" selected="Go Build.go build github.com/NJUPT-ISL/SCV">
+    <configuration default="true" type="GoApplicationRunConfiguration" factoryName="Go Application">
+      <module name="scv" />
+      <working_directory value="$PROJECT_DIR$" />
+      <go_parameters value="-i" />
+      <kind value="FILE" />
+      <filePath value="$PROJECT_DIR$" />
+      <directory value="$PROJECT_DIR$" />
+      <method v="2" />
+    </configuration>
     <configuration name="go build github.com/NJUPT-ISL/SCV" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
       <module name="scv" />
       <working_directory value="$PROJECT_DIR$" />
@@ -89,6 +147,16 @@
       <pattern value="^TestInitSCV$" />
       <method v="2" />
     </configuration>
+    <configuration default="true" type="GoTestRunConfiguration" factoryName="Go Test">
+      <module name="scv" />
+      <working_directory value="$PROJECT_DIR$" />
+      <go_parameters value="-i" />
+      <framework value="gotest" />
+      <kind value="DIRECTORY" />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$" />
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Go Build.go build github.com/NJUPT-ISL/SCV" />
@@ -97,8 +165,9 @@
       </list>
     </recent_temporary>
   </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="2" />
+    <option name="version" value="3" />
   </component>
   <component name="UnknownFeatures">
     <option featureType="com.intellij.fileTypeFactory" implementationName="Makefile" />
