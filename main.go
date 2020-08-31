@@ -19,8 +19,8 @@ import (
 	"flag"
 	"os"
 
-	corev1 "github.com/NJUPT-ISL/scv-api/api/v1"
-	"github.com/NJUPT-ISL/scv-api/pkg/collector"
+	corev1 "github.com/NJUPT-ISL/scv/api/v1"
+	"github.com/NJUPT-ISL/scv/pkg/collector"
 
 	"k8s.io/apimachinery/pkg/runtime"
 	clientgoscheme "k8s.io/client-go/kubernetes/scheme"

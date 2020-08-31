@@ -1,5 +1,5 @@
 domain: run-linux.com
-repo: github.com/NJUPT-ISL/scv-api
+repo: github.com/NJUPT-ISL/scv
 resources:
 - group: core
   kind: Scv

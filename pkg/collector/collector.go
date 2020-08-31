@@ -14,8 +14,8 @@ import (
 	"sigs.k8s.io/controller-runtime/pkg/cache"
 	"sigs.k8s.io/controller-runtime/pkg/client"
 
-	v1 "github.com/NJUPT-ISL/scv-api/api/v1"
-	"github.com/NJUPT-ISL/scv-api/pkg/log"
+	v1 "github.com/NJUPT-ISL/scv/api/v1"
+	"github.com/NJUPT-ISL/scv/pkg/log"
 )
 
 type Collector struct {
@@ -25,6 +25,7 @@ type Collector struct {
 	client client.Client
 
 	nodeName string
+
 	// GPU Info
 	cardList       v1.CardList
 	cardNumber     uint
