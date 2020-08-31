@@ -153,7 +153,6 @@ func StartCollector(c *Collector) {
 	c.nodeName = os.Getenv("NODE_NAME")
 	c.createScv()
 
-	//
 	c.Process()
 }
 
@@ -173,7 +172,7 @@ func (c *Collector) createScv() {
 }
 
 func (c *Collector) NeedUpdate(status v1.ScvStatus) bool {
-	if status.CardList == nil {
+	if status.UpdateTime == nil {
 		log.Print("CardList is Null, needs update.")
 		return true
 	}
