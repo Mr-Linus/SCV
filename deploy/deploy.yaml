@@ -11,7 +11,7 @@ rules:
   - apiGroups:
       - "core.run-linux.com"
     resources:
-      - scv
+      - scvs
     verbs:
       - delete
       - get
@@ -19,6 +19,17 @@ rules:
       - watch
       - update
       - patch
+      - create
+  - apiGroups:
+      - ""
+    resources:
+      - nodes
+    verbs:
+      - delete
+      - get
+      - list
+      - watch
+      - update
 ---
 apiVersion: v1
 kind: ServiceAccount
@@ -59,7 +70,7 @@ spec:
       serviceAccountName: scv-sa
       containers:
         - name: scv
-          image: registry.cn-hangzhou.aliyuncs.com/geekcloud/scv:2.0
+          image: registry.cn-hangzhou.aliyuncs.com/njupt-isl/scv:2.0
           imagePullPolicy: Always
           env:
             - name: NODE_NAME
@@ -68,8 +79,6 @@ spec:
                   fieldPath: spec.nodeName
             - name: NVIDIA_VISIBLE_DEVICES
               value: "all"
-            - name: MODE
-              value: "Full"
           resources:
             limits:
               memory: 200Mi

@@ -9,6 +9,7 @@ import (
 
 	"github.com/NVIDIA/gpu-monitoring-tools/bindings/go/nvml"
 
+	apierror "k8s.io/apimachinery/pkg/api/errors"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apimachinery/pkg/types"
 	"sigs.k8s.io/controller-runtime/pkg/cache"
@@ -167,9 +168,10 @@ func (c *Collector) createScv() {
 		},
 	}
 	err := c.client.Create(context.TODO(), &scv)
-	if err != nil {
-		log.ErrPrint(err)
+	if err != nil && !apierror.IsAlreadyExists(err){
+		panic(err)
 	}
+
 }
 
 func (c *Collector) NeedUpdate(status v1.ScvStatus) bool {
