@@ -153,12 +153,13 @@ func NewCollector(interval int64, client client.Client, cache cache.Cache) *Coll
 func StartCollector(c *Collector) {
 	// Init CRD & Set Config
 	c.nodeName = os.Getenv("NODE_NAME")
-	c.createScv()
-
+	if err := c.createScv(); err != nil {
+		panic(err)
+	}
 	c.Process()
 }
 
-func (c *Collector) createScv() {
+func (c *Collector) createScv() error{
 	scv := v1.Scv{
 		ObjectMeta: metav1.ObjectMeta{
 			Name: c.nodeName,
@@ -169,9 +170,9 @@ func (c *Collector) createScv() {
 	}
 	err := c.client.Create(context.TODO(), &scv)
 	if err != nil && !apierror.IsAlreadyExists(err){
-		panic(err)
+		return err
 	}
-
+	return nil
 }
 
 func (c *Collector) NeedUpdate(status v1.ScvStatus) bool {
