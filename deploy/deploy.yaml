@@ -59,7 +59,7 @@ spec:
       serviceAccountName: scv-sa
       containers:
         - name: scv
-          image: registry.cn-hangzhou.aliyuncs.com/geekcloud/scv
+          image: registry.cn-hangzhou.aliyuncs.com/geekcloud/scv:2.0
           imagePullPolicy: Always
           env:
             - name: NODE_NAME
