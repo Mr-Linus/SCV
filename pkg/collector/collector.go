@@ -14,8 +14,8 @@ import (
 	"sigs.k8s.io/controller-runtime/pkg/cache"
 	"sigs.k8s.io/controller-runtime/pkg/client"
 
-	v1 "github.com/NJUPT-ISL/scv/api/v1"
-	"github.com/NJUPT-ISL/scv/pkg/log"
+	v1 "github.com/NJUPT-ISL/SCV/api/v1"
+	"github.com/NJUPT-ISL/SCV/pkg/log"
 )
 
 type Collector struct {
