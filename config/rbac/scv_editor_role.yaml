@@ -1,0 +1,26 @@
+# permissions to do edit scvs.
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: scv-editor-role
+rules:
+- apiGroups:
+  - core.run-linux.com
+  resources:
+  - scvs
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - core.run-linux.com
+  resources:
+  - scvs/status
+  verbs:
+  - get
+  - patch
+  - update

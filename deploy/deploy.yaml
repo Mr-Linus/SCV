@@ -9,15 +9,16 @@ metadata:
   name: scv-cr
 rules:
   - apiGroups:
-      - ""
+      - "core.run-linux.com"
     resources:
-      - nodes
+      - scv
     verbs:
       - delete
       - get
       - list
       - watch
       - update
+      - patch
 ---
 apiVersion: v1
 kind: ServiceAccount
@@ -58,7 +59,7 @@ spec:
       serviceAccountName: scv-sa
       containers:
         - name: scv
-          image: registry.cn-hangzhou.aliyuncs.com/geekcloud/scv
+          image: registry.cn-hangzhou.aliyuncs.com/geekcloud/scv:2.0
           imagePullPolicy: Always
           env:
             - name: NODE_NAME

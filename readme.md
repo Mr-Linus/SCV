@@ -63,24 +63,3 @@ for more details.
     kubectl apply -f  https://raw.githubusercontent.com/NJUPT-ISL/SCV/master/deploy/deploy.yaml
     ```
 
-- Check the node label whether the nodes are added "scv" related tags:
-    ```shell
-    kubectl get nodes --show-labels  
-    ```
-  
-### Set SCV Mode
-SCV has three working modes: 
-- Full (default) Prioritize the most GPU free memory on the node.
-- High Prioritize the highest operating GPU on the node.
-- LowPower Prioritize the lowest power GPU on the node.
-
-We just need to modify the following part of the 
-deploy yaml file to the mode we want:
-
-   ```yaml
-      - name: MODE
-        value: "Full"
-   ```
-   
-> The options for the value are: `High`，`LowPower`.
-
