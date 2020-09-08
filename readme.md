@@ -14,6 +14,36 @@ fine-grained GPU scheduling tasks.
 - Bandwidth
 - Power
 - GPU Number
+
+### CRD Example
+```yaml
+apiVersion: core.run-linux.com/v1
+kind: Scv
+metadata:
+  creationTimestamp: "2020-09-01T06:45:19Z"
+  generation: 4
+  name: isl-super
+  resourceVersion: "88823392"
+  selfLink: /apis/core.run-linux.com/v1/scvs/isl-super
+  uid: 0fe4de13-34ab-44fc-9454-78a50407c4ad
+spec:
+  updateInterval: 1000
+status:
+  cardList:
+  - bandwidth: 15760
+    clock: 5705
+    core: 1911
+    freeMemory: 12194
+    health: Healthy
+    id: 0
+    model: TITAN Xp
+    power: 250
+    totalMemory: 12194
+  cardNumber: 1
+  freeMemorySum: 12194
+  totalMemorySum: 12194
+  updateTime: "2020-09-05T11:47:48Z"
+```
 ### Get Started
 - Ensure that the nvidia container runtime and the nvidia driver are installed on each kubernetes worker node. See [nvidia-docker](https://github.com/NVIDIA/nvidia-docker#quickstart)
 for more details.
