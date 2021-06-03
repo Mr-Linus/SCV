@@ -90,6 +90,7 @@ for more details.
     ```
 - Deploy the SCV into your kubernetes cluster:
     ```shell
+    kubectl apply -f https://raw.githubusercontent.com/NJUPT-ISL/SCV/release-2.0/config/crd/bases/core.run-linux.com_scvs.yaml
     kubectl apply -f  https://raw.githubusercontent.com/NJUPT-ISL/SCV/master/deploy/deploy.yaml
     ```
 
