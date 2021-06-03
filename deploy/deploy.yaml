@@ -43,7 +43,7 @@ subjects:
 apiVersion: apps/v1
 kind: DaemonSet
 metadata:
-  name: scv
+  name: scv-2
   namespace: scv
   labels:
     app: scv

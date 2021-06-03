@@ -1,4 +1,4 @@
-module github.com/NJUPT-ISL/scv
+module github.com/NJUPT-ISL/SCV
 
 go 1.13
 
